@@ -1,7 +1,7 @@
 {
   "name": "vue-multi-date-picker",
   "description": "A date picker for vue2.x support multi selection",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "fangchaozeng <1014336691@qq.com>",
   "private": false,
   "main": "dist/vue-multi-date-picker.js",
