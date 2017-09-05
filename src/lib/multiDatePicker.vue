@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div class="dp-mask" v-show="panelShow" @click="panelShow = false"></div>
     <div class="selected-date" @click="panelShow = !panelShow">
       <div style="display: flex;flex-wrap: wrap;" v-if="multi">
         <div class="sel-values" v-for="(item,index) in selected" :key="index" >
@@ -10,39 +11,41 @@
         {{selected ? selected.toLocaleDateString() : ''}}
       </div>
     </div>
-    <div class="pick-panel" v-show="panelShow">
-      <div class="dp-header">
-        <div class="btn btn-link last-year" @click="seleYear--"></div>
-        <div class="btn btn-link last-month" @click="seleMonth--"></div>
-        <div class="btn btn-link sele-year">
-          {{seleYear}}年
+    <transition name="smooth">
+      <div class="pick-panel" v-show="panelShow">
+        <div class="dp-header">
+          <div class="btn btn-link last-year" @click="seleYear--"></div>
+          <div class="btn btn-link last-month" @click="seleMonth--"></div>
+          <div class="btn btn-link sele-year">
+            {{seleYear}}年
+          </div>
+          <div class="btn btn-link sele-month">
+            {{seleMonth+1}}月
+          </div>
+          <div class="btn btn-link next-month" @click="seleMonth++"></div>
+          <div class="btn btn-link next-year" @click="seleYear++"></div>
         </div>
-        <div class="btn btn-link sele-month">
-          {{seleMonth+1}}月
-        </div>
-        <div class="btn btn-link next-month" @click="seleMonth++"></div>
-        <div class="btn btn-link next-year" @click="seleYear++"></div>
-      </div>
-      <div class="dp-body">
-        <div class="cal-container">
-          <div class="cal-item">日</div>
-          <div class="cal-item">一</div>
-          <div class="cal-item">二</div>
-          <div class="cal-item">三</div>
-          <div class="cal-item">四</div>
-          <div class="cal-item">五</div>
-          <div class="cal-item">六</div>
-          <div class="cal-item" @click="toggleSelect(item)" v-for="(item,index) in renderCalendar" :key="index" 
-          :class="[item.iscur? 'cal-enable' : 'cal-disable', isSelected(item)  ? 'cal-select' : '']">
-            {{item.label}}
+        <div class="dp-body">
+          <div class="cal-container">
+            <div class="cal-item">日</div>
+            <div class="cal-item">一</div>
+            <div class="cal-item">二</div>
+            <div class="cal-item">三</div>
+            <div class="cal-item">四</div>
+            <div class="cal-item">五</div>
+            <div class="cal-item">六</div>
+            <div class="cal-item" @click="toggleSelect(item)" v-for="(item,index) in renderCalendar" :key="index" 
+            :class="[item.iscur? 'cal-enable' : 'cal-disable', isSelected(item)  ? 'cal-select' : '']">
+              {{item.label}}
+            </div>
           </div>
         </div>
+        <div class="dp-footer" v-show="multi">
+          <div class="btn btn-cancel" @click="cancelSelect">取消</div>
+          <div class="btn btn-ok" @click="submitSelect(selected)">确定</div>
+        </div>
       </div>
-      <div class="dp-footer" v-show="multi">
-        <div class="btn btn-cancel" @click="cancelSelect">Cancel</div>
-        <div class="btn btn-ok" @click="submitSelect(selected)">OK</div>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -115,6 +118,13 @@ export default {
 </script>
 
 <style>
+.dp-mask{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
 .selected-date{
   cursor: pointer;
   min-height: 28px;
@@ -211,5 +221,15 @@ export default {
   margin: 3px;
   padding: 0 5px;
   border-radius: 3px;
+}
+.smooth-enter-active {
+  transition: all .5s ease-in-out;
+}
+.smooth-leave-active {
+  transition: all .5s ease-in-out;
+}
+.smooth-enter, .smooth-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
 }
 </style>

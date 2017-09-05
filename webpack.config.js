@@ -3,14 +3,15 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: './src/lib/index.js',
+  // entry: '.src/main.js',  
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'vue-multi-date-picker.js',
+    // filename: 'build.js'
     library: 'vue-multi-date-picker',
     libraryTarget: 'umd',
     umdNamedDefine: true
-    // filename: 'build.js'
   },
   module: {
     rules: [
