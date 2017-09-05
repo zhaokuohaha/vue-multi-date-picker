@@ -1,5 +1,9 @@
+
+<p align="center"><a href="http://123.206.203.65:8000/" target="_blank"><img width="100"src="./src/assets/logo.png"></a></p>
+
 # vue-multi-date-picker
 
+## [Demo](http://123.206.203.65:8000/)
 > A date picker for vue2.x support multi selection
 
 ## Build Setup
