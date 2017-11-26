@@ -3,7 +3,7 @@
 
 # vue-multi-date-picker
 
-## [Demo](http://123.206.203.65:8000/)
+## [Demo](http://demo.oldzeng.com/)
 > A date picker for vue2.x support multi selection
 
 ## Build Setup
@@ -30,6 +30,8 @@ npm run build
 |multi| Boolean| use multi select |
 
 ## Usage
+
+> noti: selected dates are UTC formatted
 
 ### Manually
 1. Coppy `/src/lib/multiDatePicker.vue` to your project
