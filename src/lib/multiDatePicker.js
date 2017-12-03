@@ -64,6 +64,17 @@ export default {
     submitSelect: function (value) {
       this.$emit('input', value)
       this.panelShow = false
+    },
+    changeMonth(num){
+      if(this.seleMonth + num > 11){
+        this.seleMonth = 0
+        this.seleYear ++
+      } else if (this.seleMonth + num < 0){
+        this.seleMonth = 11
+        this.seleYear --
+      } else {
+        this.seleMonth += num
+      }
     }
   }
 }

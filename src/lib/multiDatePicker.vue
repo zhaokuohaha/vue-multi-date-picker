@@ -15,14 +15,14 @@
       <div class="pick-panel" v-show="panelShow">
         <div class="dp-header">
           <div class="btn btn-link last-year" @click="seleYear--"></div>
-          <div class="btn btn-link last-month" @click="seleMonth--"></div>
+          <div class="btn btn-link last-month" @click="changeMonth(-1)"></div>
           <div class="btn btn-link sele-year">
             {{seleYear}}年
           </div>
           <div class="btn btn-link sele-month">
             {{seleMonth+1}}月
           </div>
-          <div class="btn btn-link next-month" @click="seleMonth++"></div>
+          <div class="btn btn-link next-month" @click="changeMonth(1)"></div>
           <div class="btn btn-link next-year" @click="seleYear++"></div>
         </div>
         <div class="dp-body">
