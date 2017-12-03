@@ -24,10 +24,13 @@ npm run build
 ```
 
 ## Property
-|property|type|comment|
-|---|---|---|
-|model| Array (multi = true) , Date (multi = false)| the model of date picker|
-|multi| Boolean| use multi select |
+
+|property|type|defaluse|comment|
+|---|---|---|---|
+|model|Array (multi = true) , Date (multi = false)|- |the model of date picker|
+|multi| Boolean| true |use multi select |
+|display| Array<String>|['日', '一', '二', '三', '四', '五', '六','年', '月', '取消', '确定']| the order of array must strict|
+|
 
 ## Usage
 

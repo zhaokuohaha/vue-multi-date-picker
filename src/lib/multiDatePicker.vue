@@ -17,23 +17,17 @@
           <div class="btn btn-link last-year" @click="seleYear--"></div>
           <div class="btn btn-link last-month" @click="changeMonth(-1)"></div>
           <div class="btn btn-link sele-year">
-            {{seleYear}}年
+            {{seleYear}}{{display.year}}
           </div>
           <div class="btn btn-link sele-month">
-            {{seleMonth+1}}月
+            {{seleMonth+1}}{{display.month}}
           </div>
           <div class="btn btn-link next-month" @click="changeMonth(1)"></div>
           <div class="btn btn-link next-year" @click="seleYear++"></div>
         </div>
         <div class="dp-body">
           <div class="cal-container">
-            <div class="cal-item">日</div>
-            <div class="cal-item">一</div>
-            <div class="cal-item">二</div>
-            <div class="cal-item">三</div>
-            <div class="cal-item">四</div>
-            <div class="cal-item">五</div>
-            <div class="cal-item">六</div>
+            <div class="cal-item" v-for="day in display.days" :key="day">{{day}}</div>
             <div class="cal-item" 
             @click="toggleSelect(item)" 
             v-for="(item,index) in renderCalendar" :key="index" 
@@ -43,8 +37,8 @@
           </div>
         </div>
         <div class="dp-footer" v-show="multi">
-          <div class="btn btn-cancel" @click="cancelSelect">取消</div>
-          <div class="btn btn-ok" @click="submitSelect(selected)">确定</div>
+          <div class="btn btn-cancel" @click="cancelSelect">{{display.cancel}}</div>
+          <div class="btn btn-ok" @click="submitSelect(selected)">{{display.ok}}</div>
         </div>
       </div>
     </transition>

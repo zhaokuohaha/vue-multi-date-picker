@@ -1,22 +1,33 @@
+
 export default {
   name: 'mDatePicker',
-  data () {
+  data() {
     return {
       panelShow: false,
       seleDate: new Date(),
       seleYear: new Date().getFullYear(),
-      seleMonth: new Date().getMonth()
+      seleMonth: new Date().getMonth(),
     }
   },
   props: {
-    multi: Boolean,
-    value: [Array, String, Date]
+    multi:{
+      type: Boolean,
+      default: true,
+    },
+    value:{
+      type: Array|String| Date,
+      default: []
+    },
+    displays: {
+      type: Array,
+      default: function (){ return ['日', '一', '二', '三', '四', '五', '六','年', '月', '取消', '确定']}
+    },
   },
   computed: {
     renderCalendar: function () {
       let firDay = 0 - (new Date(this.seleYear, this.seleMonth, 1).getDay()) + 1
       let res = []
-      for (let i = firDay, index = 0; index < 42; i++, index++) {
+      for (let i = firDay, index = 0; index < 42; i++ , index++) {
         let day = new Date(this.seleYear, this.seleMonth, i, 8)
         let calObj = {
           label: day.getDate(),
@@ -27,15 +38,25 @@ export default {
       }
       return res
     },
-    selected: function () { return this.value }
+    selected: function () { return this.value },
+    display: function () {
+      var d = this.displays
+      return {
+        days: d.slice(0,6),
+        year: d[7],
+        month: d[8],
+        cancel: d[9],
+        ok: d[10]
+      }
+    }
   },
   methods: {
     selectIndex: function (item) {
       if (!this.multi || !this.selected) {
         return -1
       }
-      for(let i = 0; i<this.selected.length; i++){
-        if(this.selected[i].getTime() == item.date.getTime()){
+      for (let i = 0; i < this.selected.length; i++) {
+        if (this.selected[i].getTime() == item.date.getTime()) {
           return i
         }
       }
@@ -65,13 +86,13 @@ export default {
       this.$emit('input', value)
       this.panelShow = false
     },
-    changeMonth(num){
-      if(this.seleMonth + num > 11){
+    changeMonth(num) {
+      if (this.seleMonth + num > 11) {
         this.seleMonth = 0
-        this.seleYear ++
-      } else if (this.seleMonth + num < 0){
+        this.seleYear++
+      } else if (this.seleMonth + num < 0) {
         this.seleMonth = 11
-        this.seleYear --
+        this.seleYear--
       } else {
         this.seleMonth += num
       }
