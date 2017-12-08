@@ -18,7 +18,7 @@ export default {
       type: Array|String| Date,
       default: []
     },
-    displays: {
+    disp: {
       type: Array,
       default: function (){ return ['日', '一', '二', '三', '四', '五', '六','年', '月', '取消', '确定']}
     },
@@ -40,9 +40,9 @@ export default {
     },
     selected: function () { return this.value },
     display: function () {
-      var d = this.displays
+      var d = this.disp
       return {
-        days: d.slice(0,6),
+        days: d.slice(0,7),
         year: d[7],
         month: d[8],
         cancel: d[9],

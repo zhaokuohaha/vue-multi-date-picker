@@ -2,7 +2,8 @@
   <div id="app">
     <img src="./assets/logo.png" alt="" srcset="">
     <div class="wrapper">
-      <m-date-picker v-model="date" :multi="true"></m-date-picker>
+      <m-date-picker v-model="date" :multi="true"
+      :disp="['Sun', 'Mon', 'Tus', 'Wen', 'Thu', 'Fri', 'Sat','Y', 'M', 'Cancel', 'OK']" ></m-date-picker>
       <div v-for="(item, index) in date" :key="index" class="sel-dates">
         {{item}}
       </div>
