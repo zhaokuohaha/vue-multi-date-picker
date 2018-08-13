@@ -7,6 +7,19 @@ export default {
       seleDate: new Date(),
       seleYear: new Date().getFullYear(),
       seleMonth: new Date().getMonth(),
+      
+      monthNames: ["Jan", 
+                   "Feb", 
+                   "Mar", 
+                   "Apr", 
+                   "May", 
+                   "June", 
+                   "July", 
+                   "Aug", 
+                   "Sept", 
+                   "Oct", 
+                   "Nov", 
+                   "Dec"],
     }
   },
   props: {
@@ -18,9 +31,19 @@ export default {
       type: Array|String| Date,
       default: []
     },
+    lang: {
+      type: String,
+      default: 'zh'
+    },
     disp: {
       type: Array,
-      default: function (){ return ['日', '一', '二', '三', '四', '五', '六','年', '月', '取消', '确定']}
+      default: function (){ 
+        if (this.lang === 'en') {
+          return ['Sun', 'M', 'T', 'W', 'Th', 'F', 'Sat','Year', 'Month', 'Cancel', 'OK']
+        } else {
+          return ['日', '一', '二', '三', '四', '五', '六','年', '月', '取消', '确定']
+        }
+      }
     },
   },
   computed: {

@@ -17,10 +17,12 @@
           <div class="btn btn-link last-year" @click="seleYear--"></div>
           <div class="btn btn-link last-month" @click="changeMonth(-1)"></div>
           <div class="btn btn-link sele-year">
-            {{seleYear}}{{display.year}}
+            {{seleYear}}
+            <span v-if="lang != 'en'">{{display.year}}</span>
           </div>
           <div class="btn btn-link sele-month">
-            {{seleMonth+1}}{{display.month}}
+            <span v-if="lang != 'en'">{{seleMonth+1}}{{display.year}}</span>
+            <span v-else>{{monthNames[seleMonth]}}</span>
           </div>
           <div class="btn btn-link next-month" @click="changeMonth(1)"></div>
           <div class="btn btn-link next-year" @click="seleYear++"></div>
