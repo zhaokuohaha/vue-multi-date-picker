@@ -25,19 +25,20 @@ npm run build
 
 ## Property
 
-|property|type|defaluse|comment|
+|property|type|defaults|comment|
 |---|---|---|---|
 |model|Array (multi = true) , Date (multi = false)|- |the model of date picker|
 |multi| Boolean| true |use multi select |
-|disp| Array<String>|['日', '一', '二', '三', '四', '五', '六','年', '月', '取消', '确定']| the order of array must strict|
-|
+|disp| Array<String>|['日', '一', '二', '三', '四', '五', '六','年', '月', '取消', '确定']| Customize display text. The order of array must strict |
+|lang| String | 'zh' | Set to 'en' to translate to english |
+
 
 ## Usage
 
-> noti: selected dates are UTC formatted
+> Notice: selected dates are UTC formatted
 
 ### Manually
-1. Coppy `/src/lib/multiDatePicker.vue` to your project
+1. Copy `/src/lib/multiDatePicker.vue` to your project
 
 2. Use as component 
 ```html
