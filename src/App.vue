@@ -4,17 +4,21 @@
     <div class="wrapper">
       
       <button style="z-index:9999999" @click="changeLang">文/A</button>
-      <m-date-picker 
+
+      <!-- this won't change language as button click -->
+      <!-- <m-date-picker 
         v-model="date" 
         :multi="true" 
         :disp="['日', '一', '二', '三', '四', '五', '六','年', '月', 'Cancel', 'OK']"
-        :lang="lang"></m-date-picker>
+        :lang="lang"></m-date-picker> -->
       
 <!--      To change the language to English, use this instead:-->
-<!--
-      <m-date-picker v-model="date" :multi="true"
-      :lang="'en'" ></m-date-picker>
--->
+
+      <m-date-picker 
+        v-model="date" 
+        :multi="true" 
+        :lang="lang" ></m-date-picker>
+
       
       <div v-for="(item, index) in date" :key="index" class="sel-dates">
         {{item}}

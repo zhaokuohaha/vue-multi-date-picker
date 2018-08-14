@@ -32,6 +32,7 @@ npm run build
 |disp| Array<String>|['日', '一', '二', '三', '四', '五', '六','年', '月', '取消', '确定']| Customize display text. The order of array must strict |
 |lang| String | 'zh' | Set to 'en' to translate to english |
 
+> tips: the 'disp' prop will cover 'lang' if they are both setted see `APP.vue`
 
 ## Usage
 
@@ -44,7 +45,7 @@ npm run build
 ```html
 <template>
   <div>
-    <m-date-picker v-model="date" :multi="multi"></m-date-picker>
+    <m-date-picker v-model="date" :multi="multi" lang='en'></m-date-picker>
   </div>
 </template>
 
