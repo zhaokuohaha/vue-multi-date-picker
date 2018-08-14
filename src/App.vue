@@ -3,8 +3,12 @@
     <img src="./assets/logo.png" alt="" srcset="">
     <div class="wrapper">
       
-      <m-date-picker v-model="date" :multi="true"
-      :disp="['日', '一', '二', '三', '四', '五', '六','年', '月', 'Cancel', 'OK']" ></m-date-picker>
+      <button style="z-index:9999999" @click="changeLang">文/A</button>
+      <m-date-picker 
+        v-model="date" 
+        :multi="true" 
+        :disp="['日', '一', '二', '三', '四', '五', '六','年', '月', 'Cancel', 'OK']"
+        :lang="lang"></m-date-picker>
       
 <!--      To change the language to English, use this instead:-->
 <!--
@@ -24,7 +28,13 @@ export default {
   name: 'app',
   data () {
     return {
-      date: []
+      date: [],
+      lang:'zh'
+    }
+  },
+  methods: {
+    changeLang () {
+      this.lang = this.lang === 'zh' ? 'en' : 'zh'
     }
   }
 }

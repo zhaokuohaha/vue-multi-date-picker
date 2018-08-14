@@ -18,11 +18,11 @@
           <div class="btn btn-link last-month" @click="changeMonth(-1)"></div>
           <div class="btn btn-link sele-year">
             {{seleYear}}
-            <span v-if="lang != 'en'">{{display.year}}</span>
+            <span v-if="lang != 'en' || !!disp">{{display.year}}</span>
           </div>
           <div class="btn btn-link sele-month">
-            <span v-if="lang != 'en'">{{seleMonth+1}}{{display.year}}</span>
-            <span v-else>{{monthNames[seleMonth]}}</span>
+            <span v-if="lang === 'en' && !disp">{{monthNames[seleMonth]}}</span>
+            <span v-else>{{seleMonth+1}}{{display.month}}</span>
           </div>
           <div class="btn btn-link next-month" @click="changeMonth(1)"></div>
           <div class="btn btn-link next-year" @click="seleYear++"></div>
