@@ -11,7 +11,7 @@
       
 <!--      To change the language to English, use this instead:-->
       <m-date-picker v-model="date" :multi="true"
-      lang="en" :format="formatDate" :always-display="true"></m-date-picker>
+      lang="en" :format="formatDate" :always-display="false"></m-date-picker>
       
       <div v-for="(item, index) in date" :key="index" class="sel-dates">
         {{item}}
@@ -32,7 +32,6 @@ export default {
   methods: {
     formatDate(date) {
       let formattedDate = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear(); 
-
       return formattedDate;
     }
   }
