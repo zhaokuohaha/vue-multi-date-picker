@@ -1,18 +1,18 @@
 <template>
   <div class="container">
     <div class="dp-mask" v-show="panelShow" @click="panelShow = false"></div>
-    <div class="selected-date" @click="panelShow = !panelShow">
+    <div class="selected-date" v-if="!alwaysDisplay" @click="panelShow = !panelShow">
       <div style="display: flex;flex-wrap: wrap;" v-if="multi">
         <div class="sel-values" v-for="(item,index) in selected" :key="index" >
-          {{item.toLocaleDateString()}}
+          {{format(item)}}
         </div>
       </div>
       <div v-else>
-        {{selected ? selected.toLocaleDateString() : ''}}
+        {{selected ? format(selected) : ''}}
       </div>
     </div>
     <transition name="smooth">
-      <div class="pick-panel" v-show="panelShow">
+      <div class="pick-panel" :style="{'position': alwaysDisplay ? 'inherit' : 'absolute'}" v-show="alwaysDisplay || panelShow">
         <div class="dp-header">
           <div class="btn btn-link last-year" @click="seleYear--"></div>
           <div class="btn btn-link last-month" @click="changeMonth(-1)"></div>
@@ -39,8 +39,8 @@
           </div>
         </div>
         <div class="dp-footer" v-show="multi">
-          <div class="btn btn-cancel" @click="cancelSelect">{{display.cancel}}</div>
-          <div class="btn btn-ok" @click="submitSelect(selected)">{{display.ok}}</div>
+          <div class="btn btn-cancel" @click="cancelSelect">{{alwaysDisplay ? display.clear : display.cancel}}</div>
+          <div v-if="!alwaysDisplay" class="btn btn-ok" @click="submitSelect(selected)">{{display.ok}}</div>
         </div>
       </div>
     </transition>

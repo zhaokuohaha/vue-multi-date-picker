@@ -3,14 +3,15 @@
     <img src="./assets/logo.png" alt="" srcset="">
     <div class="wrapper">
       
+      <!--
       <m-date-picker v-model="date" :multi="true"
-      :disp="['日', '一', '二', '三', '四', '五', '六','年', '月', 'Cancel', 'OK']" ></m-date-picker>
+      :disp="['日', '一', '二', '三', '四', '五', '六','年', '月', 'Cancel', 'OK']"
+      format="formatDate" ></m-date-picker>
+      -->
       
 <!--      To change the language to English, use this instead:-->
-<!--
       <m-date-picker v-model="date" :multi="true"
-      :lang="'en'" ></m-date-picker>
--->
+      lang="en" :format="formatDate" :always-display="true"></m-date-picker>
       
       <div v-for="(item, index) in date" :key="index" class="sel-dates">
         {{item}}
@@ -25,6 +26,13 @@ export default {
   data () {
     return {
       date: []
+    }
+  },
+  methods: {
+    formatDate(date) {
+      let formattedDate = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear(); 
+
+      return formattedDate;
     }
   }
 }
