@@ -31,6 +31,7 @@ npm run build
 |multi| Boolean| true |use multi select |
 |disp| Array<String>|['日', '一', '二', '三', '四', '五', '六','年', '月', '取消', '确定']| Customize display text. The order of array must strict |
 |lang| String | 'zh' | Set to 'en' to translate to english |
+|format| Function | `function (date) { return date.toLocaleDateString(); }` | Accepts a function with a date argument and returns a string |
 
 
 ## Usage

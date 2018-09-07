@@ -4,11 +4,11 @@
     <div class="selected-date" @click="panelShow = !panelShow">
       <div style="display: flex;flex-wrap: wrap;" v-if="multi">
         <div class="sel-values" v-for="(item,index) in selected" :key="index" >
-          {{item.toLocaleDateString()}}
+          {{format(item)}}
         </div>
       </div>
       <div v-else>
-        {{selected ? selected.toLocaleDateString() : ''}}
+        {{selected ? format(selected) : ''}}
       </div>
     </div>
     <transition name="smooth">

@@ -35,6 +35,10 @@ export default {
       type: String,
       default: 'zh'
     },
+    format: {
+      type: Function,
+      default: date => date.toLocaleDateString()
+    },
     disp: {
       type: Array,
       default: function (){ 
