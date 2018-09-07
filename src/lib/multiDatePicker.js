@@ -34,8 +34,23 @@ export default {
       type: String,
       default: 'zh'
     },
+    format: {
+      type: Function,
+      default: date => date.toLocaleDateString()
+    },
+    alwaysDisplay: {
+      type: Boolean,
+      default: false
+    },
     disp: {
-      type: Array
+      type: Array,
+      default: function (){ 
+        if (this.lang === 'en') {
+          return ['Sun', 'M', 'T', 'W', 'Th', 'F', 'Sat', 'Year', 'Month', 'Cancel', 'OK', 'Clear']
+        } else {
+          return ['日', '一', '二', '三', '四', '五', '六', '年', '月', '取消', '确定', 'Clear']
+        }
+      }
     },
   },
   computed: {
@@ -68,7 +83,8 @@ export default {
         year: d[7],
         month: d[8],
         cancel: d[9],
-        ok: d[10]
+        ok: d[10],
+        clear: d[11]
       }
     }
   },

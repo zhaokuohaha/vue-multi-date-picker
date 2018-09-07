@@ -3,22 +3,15 @@
     <img src="./assets/logo.png" alt="" srcset="">
     <div class="wrapper">
       
-      <button style="z-index:9999999" @click="changeLang">文/A</button>
-
-      <!-- this won't change language as button click -->
-      <!-- <m-date-picker 
-        v-model="date" 
-        :multi="true" 
-        :disp="['日', '一', '二', '三', '四', '五', '六','年', '月', 'Cancel', 'OK']"
-        :lang="lang"></m-date-picker> -->
+      <!--
+      <m-date-picker v-model="date" :multi="true"
+      :disp="['日', '一', '二', '三', '四', '五', '六','年', '月', 'Cancel', 'OK']"
+      format="formatDate" ></m-date-picker>
+      -->
       
 <!--      To change the language to English, use this instead:-->
-
-      <m-date-picker 
-        v-model="date" 
-        :multi="true" 
-        :lang="lang" ></m-date-picker>
-
+      <m-date-picker v-model="date" :multi="true"
+      lang="en" :format="formatDate" :always-display="true"></m-date-picker>
       
       <div v-for="(item, index) in date" :key="index" class="sel-dates">
         {{item}}
@@ -37,8 +30,10 @@ export default {
     }
   },
   methods: {
-    changeLang () {
-      this.lang = this.lang === 'zh' ? 'en' : 'zh'
+    formatDate(date) {
+      let formattedDate = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear(); 
+
+      return formattedDate;
     }
   }
 }
